@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2018 Alexander Seiler
+# Copyright (C) 2018 SRG SSR
 #
 #
 # This file is part of plugin.video.srgssrplay.

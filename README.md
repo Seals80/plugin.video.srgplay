@@ -1,6 +1,6 @@
 # SRG SSR Play TV
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/1aae1595af1f4f75bd805bc03cc17215)](https://www.codacy.com/app/goggle/plugin.video.srfplaytv?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=goggle/plugin.video.srfplaytv&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/1aae1595af1f4f75bd805bc03cc17215)](https://www.codacy.com/app/goggle/plugin.video.srgssrplay?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=goggle/plugin.video.srgssrplay&amp;utm_campaign=Badge_Grade)
 
 <img src="https://github.com/Seals80/plugin.video.srgplay/raw/master/resources/icon.png" width="256">
 
@@ -39,10 +39,10 @@ If you like this plugin, consider to make a donation to the author:
 
 | Method | Link / Address | QR code |
 | --- | --- | --- |
-| Paypal | [Donation link](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZXAFRHTZGRARS) | ![Paypal link](https://raw.githubusercontent.com/goggle/plugin.video.srfplaytv/e62b52bb394eeee98c929895005bbc33e6028770/paypal.png) |
+| Paypal | [Donation link](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZXAFRHTZGRARS) | ![Paypal link](https://raw.githubusercontent.com/goggle/plugin.video.srgssrplay/e62b52bb394eeee98c929895005bbc33e6028770/paypal.png) |
 
 
 ## Screenshots
-![Main menu](https://raw.githubusercontent.com/goggle/plugin.video.srfplaytv/master/resources/screenshot-01.png)
-![A list menu](https://raw.githubusercontent.com/goggle/plugin.video.srfplaytv/master/resources/screenshot-02.png)
-![Episode information](https://raw.githubusercontent.com/goggle/plugin.video.srfplaytv/master/resources/screenshot-03.png)
+![Main menu](https://raw.githubusercontent.com/goggle/plugin.video.srgssrplay/master/resources/screenshot-01.png)
+![A list menu](https://raw.githubusercontent.com/goggle/plugin.video.srgssrplay/master/resources/screenshot-02.png)
+![Episode information](https://raw.githubusercontent.com/goggle/plugin.video.srgssrplay/master/resources/screenshot-03.png)

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.srfplaytv" name="SRF Play TV" version="1.1.0" provider-name="Alexander Seiler">
+<addon id="plugin.video.srgssrplay" name="SRG SSR Play" version="1.1.0" provider-name="SRG SSR">
   <requires>
     <import addon="xbmc.python" version="2.25.0"/>
     <import addon="script.module.simplecache" version="1.0.0"/>
@@ -9,18 +9,21 @@
   </extension>
   <extension point="xbmc.addon.metadata">
     <summary lang="en_GB">SRF Play television video library</summary>
+    <summary lang="it_IT">SRG Play Video</summary>
     <summary lang="de_DE">SRF Play Videobibliothek</summary>
-    <description lang="en_GB">SRF Play TV allows you to watch the content from the video library of Swiss Radio and Television (SRF).</description>
-    <description lang="de_DE">Mit SRF Play TV können Sie den Inhalt der SRF Play Videobibliothek des Schweizer Fernsehens anschauen.</description>
+    <description lang="en_GB">SRG SSR Play allows you to watch the content from the video library of Swiss Radio and Television (SRF).</description>
+    <description lang="it_IT">Con SRG SSR Play puoi vedere il contenuto video di SRG SSR della televisione svizzera.</description>
+    <description lang="de_DE">Mit SRG SSR Play können Sie den Inhalt der SRF Play Videobibliothek des Schweizer Fernsehens anschauen.</description>
     <disclaimer lang="en_GB">Some content is geo-blocked and only available in Switzerland.</disclaimer>
+    <disclaimer lang="it_IT">Alcuni contenuti sono disponibili solo in Svizzera.</disclaimer>
     <disclaimer lang="de_DE">Einige Inhalte sind nur in der Schweiz verfügbar.</disclaimer>
     <language>de</language>
     <platform>all</platform>
     <license>GNU GENERAL PUBLIC LICENSE. Version 3, June 2007</license>
     <forum>https://forum.kodi.tv/showthread.php?tid=331129</forum>
     <website>https://www.srf.ch/play/tv</website>
-    <email>seileralex@gmail.com</email>
-    <source>https://github.com/goggle/plugin.video.srfplaytv</source>
+    <email>seals80@hotmail.com</email>
+    <source>https://github.com/goggle/plugin.video.srgssrplay</source>
     <news>v1.1.0 (2018-07-01)
      - Add support for Radio SRF 3 video livestreams.
 
