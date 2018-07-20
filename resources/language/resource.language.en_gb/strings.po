@@ -124,7 +124,7 @@ msgid "Choose your favourite shows"
 msgstr ""
 
 msgctxt "#30070"
-msgid "SRF.ch Live"
+msgid "RSI.ch Live"
 msgstr ""
 
 msgctxt "#30071"
