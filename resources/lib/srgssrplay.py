@@ -850,8 +850,7 @@ class SRFPlayTV(object):
         """
         Downloads a list of all available SRF shows and returns this list.
         """
-        json_url = ('http://il.srgssr.ch/integrationlayer/1.0/ue/%s/tv/'
-                    'assetGroup/editorialPlayerAlphabetical.json') % BU
+        json_url = ('http://il.srgssr.ch/integrationlayer/1.0/ue/%s/tv/assetGroup/editorialPlayerAlphabetical.json') % BU
         json_response = json.loads(self.open_url(json_url))
         try:
             show_list = json_response['AssetGroups']['Show']
@@ -977,18 +976,17 @@ class SRFPlayTV(object):
                 return match.group('channel_id')
             return None
 
-        channels = ['srf-1', 'srf-2', 'srf-info']
+        channels = ['La1', 'La2']
         for channel in channels:
-            url = 'https://www.srf.ch/livestream/player/%s' % channel
+            url = 'https://www.rsi.ch/play/tv/live?tvLiveId=livestream_%s' % channel
             webpage = self.open_url(url, use_cache=False)
             channel_id = extract_channel_id(webpage)
             if not channel_id:
                 log('build_tv_menu: Could not extract channel id for %s.'
                     % channel)
                 continue
-            urn = 'urn:srf:video:%s' % channel_id
-            json_url = ('https://il.srgssr.ch/integrationlayer/2.0/'
-                        'mediaComposition/byUrn/%s.json') % urn
+            urn = 'urn:rsi:video:%s' % channel_id
+            json_url = ('https://il.srgssr.ch/integrationlayer/2.0/mediaComposition/byUrn/%s.json') % urn
             info_json = json.loads(self.open_url(json_url, use_cache=False))
             try:
                 json_entry = info_json['chapterList'][0]
@@ -1159,13 +1157,11 @@ class SRFPlayTV(object):
         """
         log('build_episode_menu, video_id = %s, include_segments = %s' %
             (video_id, include_segments))
-        json_url = ('https://il.srgssr.ch/integrationlayer/2.0/%s/'
-                    'mediaComposition/video/%s.json') % (BU, video_id)
+        json_url = ('https://il.srgssr.ch/integrationlayer/2.0/%s/mediaComposition/video/%s.json') % (BU, video_id)
         try:
             json_response = json.loads(self.open_url(json_url))
         except Exception:
-            log('build_episode_menu: Cannot open media json for %s.'
-                % video_id)
+            log('build_episode_menu: Cannot open media json for %s.' % video_id)
             return
 
         chapter_urn = json_response.get('chapterUrn', '')
@@ -1303,8 +1299,7 @@ class SRFPlayTV(object):
         video_id -- the SRF video of the video to play
         """
         log('play_video, video_id = %s' % video_id)
-        json_url = ('https://il.srgssr.ch/integrationlayer/2.0/%s/'
-                    'mediaComposition/video/%s.json') % (BU, video_id)
+        json_url = ('https://il.srgssr.ch/integrationlayer/2.0/%s/mediaComposition/video/%s.json') % (BU, video_id)
         json_response = json.loads(self.open_url(json_url))
 
         chapter_list = json_response.get('chapterList', [])
