@@ -1093,12 +1093,11 @@ class SRGPlay(object):
         # TODO: This depends on the local time settings
         current_month_date = datetime.date.today().strftime('%m-%Y')
         if not page_hash:
-            json_url = ('%s/play/tv/show/%s/latestEpisodes?numberOfEpisodes=%d'
-                        '&tillMonth=%s') % (HOST_URL, show_id,
+            json_url = ('%s/play/tv/programma/%s/latestEpisodes?numberOfEpisodes=%d&tillMonth=%s') % (HOST_URL, show_id,
                                             NUMBER_OF_EPISODES,
                                             current_month_date)
         else:
-            json_url = ('%s/play/tv/show/%s/latestEpisodes?nextPageHash=%s'
+            json_url = ('%s/play/tv/programma/%s/latestEpisodes?nextPageHash=%s'
                         '&tillMonth=%s') % (HOST_URL, show_id, page_hash,
                                             current_month_date)
 
