@@ -1101,6 +1101,7 @@ class SRGPlay(object):
                         '&tillMonth=%s') % (HOST_URL, show_id, page_hash,
                                             current_month_date)
 
+        log(json_url)
         json_response = json.loads(self.open_url(json_url))
 
         try:
