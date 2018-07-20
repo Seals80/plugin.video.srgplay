@@ -380,7 +380,7 @@ def _parse_date_time(input_string):
     return None
 
 
-class SRFPlayTV(object):
+class SRGPlay(object):
     def __init__(self):
         log('__init__')
         self.cache = SimpleCache()
@@ -463,7 +463,7 @@ class SRFPlayTV(object):
             log('No video ids found on %s' % url)
         readable_string_response = string_response.replace('&quot;', '"')
         # Note: other business units might have other ids, so this is
-        # only expected to work for videos of SRF.
+        # only expected to work for videos of SRG.
         id_regex = r'''(?x)
                         \"id\"
                         \s*:\s*
@@ -527,7 +527,7 @@ class SRFPlayTV(object):
         Soon offline
         Shows by date
         Live TV
-        SRF.ch live
+        RSI.ch live
         """
         log('build_main_menu')
         main_menu_list = [
@@ -586,11 +586,11 @@ class SRFPlayTV(object):
                 'isFolder': True,
                 'displayItem': get_boolean_setting('Live_TV')
             }, {
-                # SRF.ch live
+                # RSI.ch live
                 'name': LANGUAGE(30070),
                 'mode': 18,
                 'isFolder': True,
-                'displayItem': get_boolean_setting('SRF_Live')
+                'displayItem': get_boolean_setting('RSI_Live')
             }
         ]
         for menu_item in main_menu_list:
@@ -729,7 +729,7 @@ class SRFPlayTV(object):
         Keyword arguments:
         name     -- the type of the list, can be 'Newest', 'Most clicked',
                     'Soon offline' or 'Trending'.
-        topic_id -- the SRF topic id for the given topic, this is only needed
+        topic_id -- the RSI topic id for the given topic, this is only needed
                     for the types 'Newest' and 'Most clicked' (default: None)
         page     -- an integer representing the current page in the list
         """
@@ -848,7 +848,7 @@ class SRFPlayTV(object):
 
     def read_all_available_shows(self):
         """
-        Downloads a list of all available SRF shows and returns this list.
+        Downloads a list of all available RSI shows and returns this list.
         """
         json_url = ('http://il.srgssr.ch/integrationlayer/1.0/ue/%s/tv/assetGroup/editorialPlayerAlphabetical.json') % BU
         json_response = json.loads(self.open_url(json_url))
@@ -894,7 +894,7 @@ class SRFPlayTV(object):
     def build_all_shows_menu(self, favids=None):
         """
         Builds a list of folders containing the names of all the current
-        SRF shows.
+        RSI shows.
 
         Keyword arguments:
         favids -- A list of show ids (strings) respresenting the favourite
@@ -935,7 +935,7 @@ class SRFPlayTV(object):
                 thumbnail = image_url + '/scale/width/668'\
                     if image_url else ICON
                 banner = image_url.replace(
-                    'WEBVISUAL', 'HEADER_SRF_PLAYER') if image_url else None
+                    'WEBVISUAL', 'HEADER_RSI_PLAYER') if image_url else None
             except (KeyError, IndexError):
                 image_url = FANART
                 thumbnail = ICON
@@ -952,7 +952,7 @@ class SRFPlayTV(object):
 
     def build_tv_menu(self):
         """
-        Builds the overview over the SRF TV channels (SRF 1, SRF 2, SRF info).
+        Builds the overview over the RSI TV channels (LA1, LA2).
         """
         def extract_channel_id(webpage):
             """
@@ -998,7 +998,7 @@ class SRFPlayTV(object):
 
     def build_live_menu(self):
         """
-        Builds the menu listing the currently available SRF.ch livestreams.
+        Builds the menu listing the currently available RSI.ch livestreams.
         """
         def get_live_ids():
             """
@@ -1084,7 +1084,7 @@ class SRFPlayTV(object):
         for a show given by its show id.
 
         Keyword arguments:
-        show_id   -- the SRF id of the show
+        show_id   -- the RSI id of the show
         page_hash -- the page hash to get the list of
                      another page (default: None)
         """
@@ -1148,7 +1148,7 @@ class SRFPlayTV(object):
         entry for the segment will be created.
 
         Keyword arguments:
-        video_id         -- the SRF id of the video
+        video_id         -- the RSI id of the video
         include_segments -- indicates if the segments (if available) of the
                             video should be included in the list
                             (default: True)
@@ -1296,7 +1296,7 @@ class SRFPlayTV(object):
         Gets the video stream information of a video and starts to play it.
 
         Keyword arguments:
-        video_id -- the SRF video of the video to play
+        video_id -- the RSI video of the video to play
         """
         log('play_video, video_id = %s' % video_id)
         json_url = ('https://il.srgssr.ch/integrationlayer/2.0/%s/mediaComposition/video/%s.json') % (BU, video_id)
@@ -1395,45 +1395,45 @@ def run():
     log("Name: "+str(name))
 
     if mode is None:
-        SRFPlayTV().build_main_menu()
+        SRGPlay().build_main_menu()
     elif mode == 10:
-        SRFPlayTV().build_all_shows_menu()
+        SRGPlay().build_all_shows_menu()
     elif mode == 11:
-        SRFPlayTV().build_favourite_shows_menu()
+        SRGPlay().build_favourite_shows_menu()
     elif mode == 12:
-        SRFPlayTV().build_newest_favourite_menu(page=page)
+        SRGPlay().build_newest_favourite_menu(page=page)
     elif mode == 13:
-        SRFPlayTV().build_topics_overview_menu('Newest')
+        SRGPlay().build_topics_overview_menu('Newest')
     elif mode == 14:
-        SRFPlayTV().build_topics_overview_menu('Most clicked')
+        SRGPlay().build_topics_overview_menu('Most clicked')
     elif mode == 15:
-        SRFPlayTV().build_topics_menu('Soon offline', page=page)
+        SRGPlay().build_topics_menu('Soon offline', page=page)
     elif mode == 16:
-        SRFPlayTV().build_topics_menu('Trending', page=page)
+        SRGPlay().build_topics_menu('Trending', page=page)
     elif mode == 17:
-        SRFPlayTV().build_dates_overview_menu()
+        SRGPlay().build_dates_overview_menu()
     elif mode == 18:
-        SRFPlayTV().build_live_menu()
+        SRGPlay().build_live_menu()
     elif mode == 19:
-        SRFPlayTV().manage_favourite_shows()
+        SRGPlay().manage_favourite_shows()
     elif mode == 20:
-        SRFPlayTV().build_show_menu(name, page_hash=page_hash)
+        SRGPlay().build_show_menu(name, page_hash=page_hash)
     elif mode == 21:
-        SRFPlayTV().build_episode_menu(name)
+        SRGPlay().build_episode_menu(name)
     elif mode == 22:
-        SRFPlayTV().build_topics_menu('Newest', name, page=page)
+        SRGPlay().build_topics_menu('Newest', name, page=page)
     elif mode == 23:
-        SRFPlayTV().build_topics_menu('Most clicked', name, page=page)
+        SRGPlay().build_topics_menu('Most clicked', name, page=page)
     elif mode == 24:
-        SRFPlayTV().build_date_menu(name)
+        SRGPlay().build_date_menu(name)
     elif mode == 25:
-        SRFPlayTV().pick_date()
+        SRGPlay().pick_date()
     elif mode == 26:
-        SRFPlayTV().build_tv_menu()
+        SRGPlay().build_tv_menu()
     elif mode == 50:
-        SRFPlayTV().play_video(name)
+        SRGPlay().play_video(name)
     elif mode == 51:
-        SRFPlayTV().play_livestream(name)
+        SRGPlay().play_livestream(name)
 
     xbmcplugin.setContent(int(sys.argv[1]), CONTENT_TYPE)
     xbmcplugin.addSortMethod(int(sys.argv[1]), xbmcplugin.SORT_METHOD_UNSORTED)
