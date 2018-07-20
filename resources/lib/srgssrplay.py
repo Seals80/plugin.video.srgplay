@@ -1369,6 +1369,7 @@ def run():
     Run the plugin.
     """
     params = get_params()
+    log(params)
     try:
         url = urllib.unquote_plus(params["url"])
     except Exception:
